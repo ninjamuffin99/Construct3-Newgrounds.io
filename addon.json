@@ -1,12 +1,12 @@
 ﻿{
 	"is-c3-addon": true,
 	"type": "plugin",
-	"name": "Newgrounds.io",
+	"name": "Newgrounds",
 	"id": "NinjaMuffin_NewgroundsC3Port",
 	"version": "1.0.0.0",
 	"author": "ninjamuffin99",
-	"website": "https://www.construct.net",
-	"documentation": "https://www.construct.net",
+	"website": "https://github.com/ninjamuffin99/Construct3-Newgrounds.io",
+	"documentation": "https://github.com/ninjamuffin99/Construct3-Newgrounds.io",
 	"description": "Example custom drawing Construct 3 plugin.",
 	"editor-scripts": [
 						"plugin.js",

@@ -17,7 +17,7 @@
 	
 	let app = null;
 	
-	const PLUGIN_CLASS = SDK.Plugins.MyCompany_DrawingPlugin = class MyDrawingPlugin extends SDK.IPluginBase
+	const PLUGIN_CLASS = SDK.Plugins.NinjaMuffin_NewgroundsC3Port = class NinjaMuffin_NewgroundsC3Port extends SDK.IPluginBase
 	{
 		constructor()
 		{
@@ -29,7 +29,7 @@
 			this._info.SetDescription(lang(".description"));
 			this._info.SetVersion(PLUGIN_VERSION);
 			this._info.SetCategory(PLUGIN_CATEGORY);
-			this._info.SetAuthor("Scirra");
+			this._info.SetAuthor("ninjamuffin99");
 			this._info.SetHelpUrl(lang(".help-url"));
 			this._info.SetPluginType("world");			// mark as world plugin, which can draw
 			this._info.SetIsResizable(true);			// allow to be resized
@@ -44,20 +44,15 @@
 			SDK.Lang.PushContext(".properties");
 			
 			this._info.SetProperties([
-				new SDK.PluginProperty("link", "edit-image", {
-					linkCallback: function (sdkType) {
-						sdkType.GetObjectType().EditImage();
-					},
-					callbackType: "once-for-type"
-				}),
-				new SDK.PluginProperty("link", "make-original-size", {
-					linkCallback: function (sdkInst) {
-						sdkInst.OnMakeOriginalSize();
-					},
-					callbackType: "for-each-instance"
-				}),
-				new SDK.PluginProperty("integer", "test-property", 0)
+				new SDK.PluginProperty("text", "app-id", "39685:NJ1KkPGb"),
+				new SDK.PluginProperty("text", "aes-key", "qsqKxz5dJouIkUNe3NBppQ=="),
+				new SDK.PluginProperty("check", "debug", false)
 			]);
+
+			this._info.AddFileDependency({
+				filename: "newgroundsio.min.js",
+				type: "external-script"
+				});
 			
 			SDK.Lang.PopContext();		// .properties
 			

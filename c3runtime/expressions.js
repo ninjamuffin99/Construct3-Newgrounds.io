@@ -1,7 +1,7 @@
 "use strict";
 
 {
-	C3.Plugins.MyCompany_DrawingPlugin.Exps =
+	C3.Plugins.NinjaMuffin_NewgroundsC3Port.Exps =
 	{
 		Double(number)
 		{

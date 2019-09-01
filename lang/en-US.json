@@ -3,7 +3,7 @@
 	"fileDescription": "Strings for MyDrawingPlugin.",
 	"text": {
 		"plugins": {
-			"mycompany_drawingplugin": {
+			"ninjamuffin_newgroundsc3port": {
 				"name": "MyDrawing",
 				"description": "Testing a custom drawing third-party plugin.",
 				"help-url": "https://www.construct.net",
@@ -21,10 +21,25 @@
 					"test-property": {
 						"name": "Test property",
 						"desc": "A test number property. Displayed by 'Alert' action."
+					},
+					"app-id": {
+						"name": "App id",
+						"desc": "App id."
+					},
+					"aes-key": {
+						"name": "AES Key",
+						"desc": "Aes encryption key."
+					},
+					"debug": {
+						"name": "Debug",
+						"desc": "Enable debug mode."
 					}
 				},
 				"aceCategories": {
-					"custom": "Custom"
+					"custom": "Custom",
+					"login": "Login",
+					"logging-out": "Logging out",
+					"user": "User"
 				},
 				"conditions": {
 					"is-large-number": {
@@ -37,13 +52,48 @@
 								"desc": "Number to test if greater than 100."
 							}
 						}
-					}
+					},
+					"on-login-success": {
+						"list-name": "On login",
+						"display-text": "On login success",
+						"description": "Triggered when login success."
+						},
+					"on-login-error": {
+						"list-name": "On login error",
+						"display-text": "On login error",
+						"description": "Triggered when login error."
+						},
+					"on-login-cancel": {
+						"list-name": "On login cancel",
+						"display-text": "On login cancel",
+						"description": "Triggered when login cancel."
+						},
+					"is-login": {
+						"list-name": "Is login",
+						"display-text": "Is login",
+						"description": "Return true if login."
+						},
+					"on-logged-out": {
+						"list-name": "On logged out",
+						"display-text": "On logged out",
+						"description": "Triggered when logged ou."
+						}
 				},
 				"actions": {
 					"do-alert": {
 						"list-name": "Do alert",
 						"display-text": "Do alert",
 						"description": "Do a dummy alert."
+					},
+					"login": {
+						"list-name": "Login",
+						"display-text": "Login",
+						"description": "Logint."
+					},
+					"logging-out": {
+						"list-name": "Logging out",
+						"display-text": "Logging out",
+						"description": "Logging out."
 					}
 				},
 				"expressions": {
@@ -54,7 +104,22 @@
 							"number": {
 								"name": "Number",
 								"desc": "The number to double."
+								}
 							}
+						},
+					"user-name": {
+						"description": "Get user name of current session.",
+						"translated-name": "UserName"
+						},
+					"user-id": {
+						"description": "Get user id of current session.",
+						"translated-name": "UserID"
+						},
+					"user-icon-url": {
+						"description": "Get user icon URL of current session. Add 1st parameter to 0=small, 1=medium, 2=large",
+						"translated-name": "UserIconURL",
+						"params": {
+							"size0": { "name":"Size", "desc":"0=small, 1=medium, 2=large, or S,M,L."}
 						}
 					}
 				}

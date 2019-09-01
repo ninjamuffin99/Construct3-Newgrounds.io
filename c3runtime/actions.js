@@ -1,7 +1,7 @@
 "use strict";
 
 {
-	C3.Plugins.MyCompany_DrawingPlugin.Acts =
+	C3.Plugins.NinjaMuffin_NewgroundsC3Port.Acts =
 	{
 		Alert()
 		{

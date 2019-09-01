@@ -3,7 +3,7 @@
 {
 	const tempQuad = new C3.Quad();
 	
-	C3.Plugins.MyCompany_DrawingPlugin.Instance = class DrawingInstance extends C3.SDKWorldInstanceBase
+	C3.Plugins.NinjaMuffin_NewgroundsC3Port.Instance = class DrawingInstance extends C3.SDKWorldInstanceBase
 	{
 		constructor(inst, properties)
 		{

@@ -1,7 +1,7 @@
 "use strict";
 
 {
-	C3.Plugins.MyCompany_DrawingPlugin = class DrawingPlugin extends C3.SDKPluginBase
+	C3.Plugins.NinjaMuffin_NewgroundsC3Port = class DrawingPlugin extends C3.SDKPluginBase
 	{
 		constructor(opts)
 		{
