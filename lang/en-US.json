@@ -4,8 +4,8 @@
 	"text": {
 		"plugins": {
 			"ninjamuffin_newgroundsc3port": {
-				"name": "MyDrawing",
-				"description": "Testing a custom drawing third-party plugin.",
+				"name": "Lmao NG API",
+				"description": "Testing NG API",
 				"help-url": "https://www.construct.net",
 				"properties": {
 					"edit-image": {
