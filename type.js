@@ -1,9 +1,9 @@
 "use strict";
 
 {
-	const PLUGIN_CLASS = SDK.Plugins.MyCompany_DrawingPlugin;
+	const PLUGIN_CLASS = SDK.Plugins.NinjaMuffin_NewgroundsC3Port;
 	
-	PLUGIN_CLASS.Type = class MyDrawingPluginType extends SDK.ITypeBase
+	PLUGIN_CLASS.Type = class NinjaMuffin_NewgroundsC3Port extends SDK.ITypeBase
 	{
 		constructor(sdkPlugin, iObjectType)
 		{
