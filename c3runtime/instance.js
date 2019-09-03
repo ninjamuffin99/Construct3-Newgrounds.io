@@ -14,12 +14,52 @@
 			if (properties)
 			{
 				this._testProperty = properties[0];
+
+				this.ngio = new window["Newgrounds"]["io"]["core"](properties[0], properties[1]);
+				this.ngio["debug"] = (properties[2] === 1);
+				console.log(this.ngio);
+
+				//this.isLogin = false;
+
+				this.LoginPooling();
 			}
 		}
 		
 		Release()
 		{
 			super.Release();
+		}
+
+		onDestroy()
+		{
+
+		}
+
+		onLoggedIn() 
+		{
+			this.isLogin = true;
+			
+		}
+
+		LoginPooling()
+		{
+			var self = this;
+			var onGetSession = function (session) {
+				var isLogin = session && !session["expired"] && session["user"];
+	
+				if (!self.isLogin && isLogin)
+					self.onLoggedIn();
+				else if (self.isLogin && !isLogin)
+					self.onLoggedOut();
+	
+				self.isLogin = isLogin;
+	
+				// pooling next 3 seconds
+				setTimeout(function () {
+					self.LoginPooling();
+				}, 3000);
+			}
+			this.ngio["getSessionLoader"]()["getValidSession"](onGetSession);
 		}
 		
 		Draw(renderer)
