@@ -1,7 +1,7 @@
 "use strict";
 
 {
-	C3.Plugins.NinjaMuffin_NewgroundsC3Port.Type = class DrawingType extends C3.SDKTypeBase
+	C3.Plugins.NinjaMuffin_NewgroundsC3Port.Type = class NinjaMuffin_NewgroundsC3PortType extends C3.SDKTypeBase
 	{
 		constructor(objectClass)
 		{

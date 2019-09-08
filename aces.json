@@ -1,29 +1,25 @@
 ﻿{
-	"login": {
+	"login": { 
 		"conditions": [
 			{
-				"c2id": 1,
 				"id": "on-login-success",
 				"scriptName": "OnLoginSuccess",
 				"isTrigger": "true",
 				"highlight": false
 			},
 			{
-				"c2id": 2,
 				"id": "on-login-error",
 				"scriptName": "OnLoginError",
 				"isTrigger": "true",
 				"highlight": false
 			},
 			{
-				"c2id": 3,
 				"id": "on-login-cancel",
 				"scriptName": "OnLoginCancel",
 				"isTrigger": "true",
 				"highlight": false
 			},
 			{
-				"c2id": 4,
 				"id": "is-login",
 				"scriptName": "IsLogin",
 				"highlight": false
@@ -31,7 +27,6 @@
 		],
 		"actions": [
 			{
-				"c2id": 1,
 				"id": "login",
 				"scriptName": "Login",
 				"highlight": false
@@ -43,7 +38,6 @@
 	"logging-out": {
 		"conditions": [
 			{
-				"c2id": 5,
 				"id": "on-logged-out",
 				"scriptName": "OnLoggedOut",
 				"isTrigger": "true",
@@ -52,7 +46,6 @@
 		],
 		"actions": [
 			{
-				"c2id": 2,
 				"id": "logging-out",
 				"scriptName": "LoggingOut",
 				"highlight": false
@@ -68,7 +61,6 @@
 		],
 		"expressions": [
 			{
-				"c2id": 1,
 				"id": "user-name",
 				"expressionName": "UserName",
 				"scriptName": "UserName",
@@ -76,7 +68,6 @@
 				"returnType": "string"
 			},
 			{
-				"c2id": 2,
 				"id": "user-id",
 				"expressionName": "UserID",
 				"scriptName": "UserID",
@@ -84,7 +75,6 @@
 				"returnType": "number"
 			},
 			{
-				"c2id": 3,
 				"id": "user-icon-url",
 				"expressionName": "UserIconURL",
 				"scriptName": "UserIconURL",
@@ -97,20 +87,291 @@
 			}
 		]
 	},
-	"custom": {
+	"get-list": {
 		"conditions": [
 			{
-				"id": "is-large-number",
-				"scriptName": "IsLargeNumber",
-				"highlight": true,
+				"id": "on-get-medals-list-success",
+				"scriptName": "OnGetMedalsListSuccess",
+				"isTrigger": "true",
+				"highlight": false
+			},
+			{
+				"id": "on-get-medals-list-error",
+				"scriptName": "OnGetMedalsListError",
+				"isTrigger": "true",
+				"highlight": false
+			},
+			{
+				"id": "for-each-medal",
+				"scriptName": "ForEachMedal",
+				"isLooping": "true",
+				"isInvertible": "false",
+				"highlight": false
+			},
+			{
+				"id": "current-medal-is-secret",
+				"scriptName": "CurMedalIsSecret",
+				"highlight": false
+			},
+			{
+				"id": "current-medal-is-unlocked",
+				"scriptName": "CurMedalIsUnlocked",
+				"highlight": false
+			},
+			{
+				"id": "compare-current-medal-difficulty",
+				"scriptName": "CompareCurMedalDifficulty",
+				"highlight": false,
 				"params": [
-					{
-						"id": "number",
-						"type": "number"
-					}
+					{"id":"comparison0", "type":"cmp"},
+					{"id":"difficulty_types6", "type":"combo", "items":["easy","moderate","challenging","difficult","brutal"]}
 				]
+			},
+			{
+				"id": "index-to-medal-is-secret",
+				"scriptName": "Index2MedalIsSecret",
+				"highlight": false,
+				"params": [
+					{"id":"index0", "type":"number", "initialValue":"0"}
+				]
+			},
+			{
+				"id": "index-to-medal-is-unlocked",
+				"scriptName": "Index2MedalIsUnlocked",
+				"highlight": false,
+				"params": [
+					{"id":"index0", "type":"number", "initialValue":"0"}
+				]
+			},
+			{
+				"id": "compare-index-to-medal-difficulty",
+				"scriptName": "CompareIndex2MedalDifficulty",
+				"highlight": false,
+				"params": [
+					{"id":"index0", "type":"number", "initialValue":"0"},
+					{"id":"comparison1", "type":"cmp"},
+					{"id":"difficulty_types7", "type":"combo", "items":["easy","moderate","challenging","difficult","brutal"]}
+				]
+			}					
+		],
+		"actions": [
+			{
+				"id": "get-list",
+				"scriptName": "GetList",
+				"highlight": false
+			}			
+		],
+		"expressions": [
+			{
+				"id": "medals-as-json",
+				"expressionName": "MedalsAsJSON",
+				"scriptName": "MedalsAsJSON",
+				"highlight": false,
+				"returnType": "string"
+			},
+			{
+				"id": "medals-count",
+				"expressionName": "MedalsCount",
+				"scriptName": "MedalsCount",
+				"highlight": false,
+				"returnType": "number"
+			},
+			{
+				"id": "current-medal-description",
+				"expressionName": "CurMedalDescription",
+				"scriptName": "CurMedalDescription",
+				"highlight": false,
+				"returnType": "string"
+			},
+			{
+				"id": "current-medal-difficulty",
+				"expressionName": "CurMedalDifficulty",
+				"scriptName": "CurMedalDifficulty",
+				"highlight": false,
+				"returnType": "number"
+			},
+			{
+				"id": "current-medal-icon",
+				"expressionName": "CurMedalIcon",
+				"scriptName": "CurMedalIcon",
+				"highlight": false,
+				"returnType": "string"
+			},
+			{
+				"id": "current-medal-id",
+				"expressionName": "CurMedalID",
+				"scriptName": "CurMedalID",
+				"highlight": false,
+				"returnType": "number"
+			},
+			{
+				"id": "current-medal-name",
+				"expressionName": "CurMedalName",
+				"scriptName": "CurMedalName",
+				"highlight": false,
+				"returnType": "string"
+			},
+			{
+				"id": "current-medal-value",
+				"expressionName": "CurMedalValue",
+				"scriptName": "CurMedalValue",
+				"highlight": false,
+				"returnType": "number"
+			},
+			{
+				"id": "current-medal-is-secret",
+				"expressionName": "CurMedalIsSecret",
+				"scriptName": "CurMedalIsSecret",
+				"highlight": false,
+				"returnType": "number"
+			},
+			{
+				"id": "current-medal-is-unlocked",
+				"expressionName": "CurMedalIsUnlocked",
+				"scriptName": "CurMedalIsUnlocked",
+				"highlight": false,
+				"returnType": "number"
+			},
+			{
+				"id": "loop-index",
+				"expressionName": "LoopIndex",
+				"scriptName": "LoopIndex",
+				"highlight": false,
+				"returnType": "number"
+			},			
+			{
+				"id": "index-to-medal-description",
+				"expressionName": "Index2MedalDescription",
+				"scriptName": "Index2MedalDescription",
+				"highlight": false,
+				"returnType": "string",
+				"params": [
+					{"id":"index0", "type":"number", "initialValue":"0"}
+				]
+			},
+			{
+				"id": "index-to-medal-difficulty",
+				"expressionName": "Index2MedalDifficulty",
+				"scriptName": "Index2MedalDifficulty",
+				"highlight": false,
+				"returnType": "number",
+				"params": [
+					{"id":"index0", "type":"number", "initialValue":"0"}
+				]
+			},
+			{
+				"id": "index-to-medal-icon",
+				"expressionName": "Index2MedalIcon",
+				"scriptName": "Index2MedalIcon",
+				"highlight": false,
+				"returnType": "string",
+				"params": [
+					{"id":"index0", "type":"number", "initialValue":"0"}
+				]
+			},
+			{
+				"id": "index-to-medal-id",
+				"expressionName": "Index2MedalID",
+				"scriptName": "Index2MedalID",
+				"highlight": false,
+				"returnType": "number",
+				"params": [
+					{"id":"index0", "type":"number", "initialValue":"0"}
+				]
+			},
+			{
+				"id": "index-to-medal-name",
+				"expressionName": "Index2MedalName",
+				"scriptName": "Index2MedalName",
+				"highlight": false,
+				"returnType": "string",
+				"params": [
+					{"id":"index0", "type":"number", "initialValue":"0"}
+				]
+			},
+			{
+				"id": "index-to-medal-value",
+				"expressionName": "Index2MedalValue",
+				"scriptName": "Index2MedalValue",
+				"highlight": false,
+				"returnType": "number",
+				"params": [
+					{"id":"index0", "type":"number", "initialValue":"0"}
+				]
+			},
+			{
+				"id": "index-to-medal-is-secret",
+				"expressionName": "Index2MedalIsSecret",
+				"scriptName": "Index2MedalIsSecret",
+				"highlight": false,
+				"returnType": "number",
+				"params": [
+					{"id":"index0", "type":"number", "initialValue":"0"}
+				]
+			},
+			{
+				"id": "index-to-medal-is-unlocked",
+				"expressionName": "Index2MedalIsUnlocked",
+				"scriptName": "Index2MedalIsUnlocked",
+				"highlight": false,
+				"returnType": "number",
+				"params": [
+					{"id":"index0", "type":"number", "initialValue":"0"}
+				]
+			}										
+		]
+	},
+	"unlock": {
+		"conditions": [
+			{
+				"id": "on-unlock-medal-success",
+				"scriptName": "OnUnlockMedalSuccess",
+				"isTrigger": "true",
+				"highlight": false
+			},
+			{
+				"id": "on-unlock-medal-error",
+				"scriptName": "OnUnlockMedalError",
+				"isTrigger": "true",
+				"highlight": false
 			}
 		],
+		"actions": [
+			{
+				"id": "unlock",
+				"scriptName": "Unlock",
+				"highlight": false,
+				"params": [
+					{"id":"id0", "type":"number", "initialValue":"0"}
+				]
+			}			
+		],
+		"expressions": [
+			{
+				"id": "last-unlocked-medal-id",
+				"expressionName": "LastUnlockedMedalID",
+				"scriptName": "LastUnlockedMedalID",
+				"highlight": false,
+				"returnType": "number"
+			}
+		]
+	},
+	"error-message": {
+		"conditions": [
+		],
+		"actions": [
+		],
+		"expressions": [
+			{
+				"id": "error-message",
+				"expressionName": "ErrorMessage",
+				"scriptName": "ErrorMessage",
+				"highlight": false,
+				"returnType": "string"
+			}
+		]
+	},
+	"custom": {
 		"actions": [
 			{
 				"id": "do-alert",

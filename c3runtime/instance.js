@@ -3,7 +3,7 @@
 {
 	const tempQuad = new C3.Quad();
 	
-	C3.Plugins.NinjaMuffin_NewgroundsC3Port.Instance = class DrawingInstance extends C3.SDKWorldInstanceBase
+	C3.Plugins.NinjaMuffin_NewgroundsC3Port.Instance = class NinjaMuffin_NewgroundsC3PortInstance extends C3.SDKWorldInstanceBase
 	{
 		constructor(inst, properties)
 		{
@@ -17,12 +17,20 @@
 
 				this.ngio = new window["Newgrounds"]["io"]["core"](properties[0], properties[1]);
 				this.ngio["debug"] = (properties[2] === 1);
-				console.log(this.ngio);
+				
+				this.lastResult = null;
+				this.lastMedals = null;
+				this.exp_LoopIndex = 0;
 
-				//this.isLogin = false;
+				this.isLogin = false;
 
 				this.LoginPooling();
 			}
+		}
+
+		GetNGIO ()
+		{
+			return this.ngio;
 		}
 		
 		Release()
@@ -35,10 +43,36 @@
 
 		}
 
+		getDebuggerCalues(prospections)
+		{
+			C3.Plugins.NinjaMuffin_NewgroundsC3Port.Exps.UserName.call(this, fake_ret);
+			var userName = fake_ret.value;
+
+			C3.Plugins.NinjaMuffin_NewgroundsC3Port.Exps.UserID.call(this, fake_ret);
+			var userID = fake_ret.value;
+
+			var self = this;
+
+			prospections.push({
+				"title": this.type.name, 
+				"properties": [
+					{ "name": "User name", "value": userName, "readonly": true },
+					{ "name": "User ID", "value": userID, "readonly": true},
+				]
+			});
+		}
+
 		onLoggedIn() 
 		{
 			this.isLogin = true;
-			
+			this.Trigger(C3.Plugins.NinjaMuffin_NewgroundsC3Port.Cnds.OnLoginSucces, this);
+		}
+
+		onLoggedOut()
+		{
+			this.isLogin = false;
+			this.ngio["getSessionLoader"]()["closePassport"]();
+			this.Trigger(C3.Plugins.NinjaMuffin_NewgroundsC3Port.Cnds.OnLoggedOut, this);
 		}
 
 		LoginPooling()
