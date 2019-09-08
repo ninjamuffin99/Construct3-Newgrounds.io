@@ -87,6 +87,102 @@
 				"id": id,
 			};
 			this.GetNGIO()["callComponent"]("Medal.unlock", param, callback);
+		},
+
+		//SCORES
+
+		SetBoardID(id)
+		{
+			this.scoreboardID = id;
+		},
+
+		SetTag(tag)
+		{
+			this.tag = tag;
+		},
+
+		GetBoards()
+		{
+			var self = this;
+			var getBoards = function (result) {
+				if (result["success"]) {
+					self.lastBoards = [];
+					var boards = result["scoreboards"], board;
+					var i, cnt = boards.length;
+					for (i = 0; i < cnt; i++) {
+						board = boards[i];
+						self.lastBoards.push({
+							"id": board["id"],
+							"name": board["name"]
+						})
+					}
+				}
+				else
+					self.lastBoards = null;
+			};
+
+			var cnds = C3.Plugins.NinjaMuffin_NewgroundsC3Port.Cnds;
+			var callback = getHandler(this, cnds.OnGetBoardsSuccess, cnds.OnGetBoardsError, getBoards);
+			this.GetNGIO()["callComponent"]("ScoreBoard.getBoards", {}, callback);
+		},
+
+		PostScore(value, tag)
+		{
+			var cnds = C3.Plugins.NinjaMuffin_NewgroundsC3Port.Cnds;
+			var callback = getHandler(this, cnds.OnPostScoreSuccess, cnds.OnPostScoreError);
+			var param = {
+				"id": this.scoreboardID,
+				"value": value,
+			};
+
+			if (this.tag !== "")
+				param["tag"] = this.tag;
+			this.GetNGIO()["callComponent"]("ScoreBoard.postScore", param, callback);
+		},
+
+		SetPeriod(period)
+		{
+			if (typeof (period) === "number")
+				period = periodCode[period];
+			this.period = period;
+		},
+
+		RequestInRange(skip, limit)
+		{
+			this.GetScoresInRange(skip, limit);
+		},
+
+		RequestTurnToPage(pageIndex)
+		{
+			this.pageIndex = pageIndex;
+			var skip = this.GetSkip();
+			this.GetScoresInRange(skip, this.limit);
+		},
+
+		RequestUpdateCurrentPage()
+		{
+			var skip = this.GetSkip();
+			this.GetScoresInRange(skip, this.limit);
+		},
+
+		RequestTurnToPreviousPage()
+		{
+			this.pageIndex -= 1;
+			if (this.pageIndex < 0)
+				this.pageIndex = 0;
+			var skip = this.GetSkip();
+			this.GetScoresInRange(skip, this.limit);
+		},
+
+		ShowAll()
+		{
+			this.socialUser = null;
+		},
+
+		ShowUser(user)
+		{
+			this.socialUser = user;
 		}
+
 	};
 }
