@@ -708,13 +708,6 @@
 		"actions": [
 		],
 		"expressions": [
-			{
-				"id": "loop-index",
-				"expressionName": "LoopIndex",
-				"scriptName": "LoopIndex",
-				"highlight": false,
-				"returnType": "number"
-			}
 		]
 	},
 
