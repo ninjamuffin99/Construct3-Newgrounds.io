@@ -21,7 +21,7 @@
 		{
 			//return false;
 			//maybe have to do `return C3.Plugins.NinjaMuffin_NewgroundsC3Port.Instance.isLogin
-			return this.IsLogin;
+			return this.isLogin;
 		},
 		OnLoggedOut()
 		{

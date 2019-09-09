@@ -59,7 +59,7 @@
 
 		// AUTHENTICATION SHIT
 
-		getDebuggerCalues(prospections)
+		getDebuggerValues(prospections)
 		{
 			C3.Plugins.NinjaMuffin_NewgroundsC3Port.Exps.UserName.call(this, fake_ret);
 			var userName = fake_ret.value;
@@ -80,6 +80,7 @@
 
 		onLoggedIn() 
 		{
+			console.log("LOGGED IN!!");
 			this.isLogin = true;
 			this.Trigger(C3.Plugins.NinjaMuffin_NewgroundsC3Port.Cnds.OnLoginSucces, this);
 		}
